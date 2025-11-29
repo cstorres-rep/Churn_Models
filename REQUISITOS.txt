@@ -1,0 +1,6 @@
+Lista de Requisitos:
+Python 3 ou superior
+Jupyter
+Pandas
+Scikitlearn
+Matplotlib
