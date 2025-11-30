@@ -46,6 +46,6 @@ def processamento():
     df_analise = df[var].copy()
     df_analise['churn'] = df['churn'].copy()
 
-    df_analise
+    return df_analise
 
 # %%
