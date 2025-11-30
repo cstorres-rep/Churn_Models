@@ -1,5 +1,6 @@
 #%%
 import pandas as pd
+import joblib
 from sklearn import tree
 from sklearn import linear_model
 from sklearn import naive_bayes
@@ -27,5 +28,9 @@ def treinamento(X: pd.DataFrame, y: pd.Series) -> pd.DataFrame:
     df_predict['arvore_probas'] = arvore.predict_proba(X)[:, 1]
     df_predict['logistica_probas'] = logistica.predict_proba(X)[:, 1]
     df_predict['naive_probas'] = naive.predict_proba(X)[:, 1]
+
+    joblib.dump(logistica, '../modelos/modelo_churn_logistica.pkl')
+    joblib.dump(naive, '../modelos/modelo_churn_naive.pkl')
+
 
     return df_predict
