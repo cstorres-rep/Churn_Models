@@ -7,7 +7,7 @@ def run_pipeline():
 
     print(" Carregando e processando dados")
     # Função processamento
-    df_analise = processamento('data/dataset_churn.xlsx')
+    df_analise = processamento()
 
     print("\nSeparando caracteristicas (X) e churn target (y)...")
     # 3. Separa as caracteristicas (X) e the churn target (y)
@@ -23,7 +23,8 @@ def run_pipeline():
     print("\nMontando gráfico")
     # 5. Plotando curva ROC
     curva_roc(df_predict)
-    print("\Fim.")
+    
+    print("Fim.")
 
 
 if __name__ == '__main__':
