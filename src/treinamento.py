@@ -1,9 +1,11 @@
 #%%
 import pandas as pd
 import joblib
+import os
 from sklearn import tree
 from sklearn import linear_model
 from sklearn import naive_bayes
+
 
 def treinamento(X: pd.DataFrame, y: pd.Series) -> pd.DataFrame:
 
@@ -29,8 +31,12 @@ def treinamento(X: pd.DataFrame, y: pd.Series) -> pd.DataFrame:
     df_predict['logistica_probas'] = logistica.predict_proba(X)[:, 1]
     df_predict['naive_probas'] = naive.predict_proba(X)[:, 1]
 
-    joblib.dump(logistica, '../modelos/modelo_churn_logistica.pkl')
-    joblib.dump(naive, '../modelos/modelo_churn_naive.pkl')
 
+    # Salvando modelos de regressão logistica, naive bayes e Tree Classifier
+    model_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'modelos'))
 
+    joblib.dump(arvore, os.path.join(model_dir, 'modelo_churn_arvore.pkl'))
+    joblib.dump(logistica, os.path.join(model_dir, 'modelo_churn_logistica.pkl'))
+    joblib.dump(naive, os.path.join(model_dir, 'modelo_churn_naive.pkl'))
+    
     return df_predict
